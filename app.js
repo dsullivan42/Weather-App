@@ -4,6 +4,11 @@ var day3Forecast = document.querySelector('#forecast3');
 var day4Forecast = document.querySelector('#forecast4');
 var day5Forecast = document.querySelector('#forecast5');
 var todaysForecast = document.queryselector('.weatherContentToday');
+var maxTemperature = document.querySelector('#cityTemp');
+var humidity = document.querySelector('#cityHumidity');
+var windSpeed = document.querySelector('#cityWindSpeed');
+var cityName = document.querySelector('#cityName');
+var button = document.querySelector('#searchButton');
 
 function getParams(){
     var searchParamsArr = document.location.search.split('&');
@@ -22,12 +27,12 @@ function searchForecast(event) {
 
     var queryString = '/geo/1.0/direct?q=' + searchInputVal + '&limit=5&appid=' + appid;
         location.assign(queryString);
+        cityName = location;
 }
 
 function searchApi(query, appid) {
     var locQueryUrl = 'https://api.openweathermap.org/';
     locQueryUrl = locQueryUrl + 'geo/1.0/direct?q=' + query + '&limit=5&appid=' + appid;
-    locQueryUrl = locQueryUrl.find('lon', 'lat');
     var lon = locQueryUrl.lon;
     var lat = locQueryUrl.lat;
     lon = JSON.parse(localStorage.getItem('lon')) || [];
@@ -38,7 +43,18 @@ function searchApi(query, appid) {
 secondSearch(lon,lat,query,appid){
     var forecastUrl = 'https://api.openweathermap.org/';
     forecastUrl = forecastUrl + 'data/2.5/forecast?lat=' + lat + '&lon=' + lon + '&appid=' + appid;
-}
+    // day1Forecast = forecastUrl.list[0].weather[0].icon;
+    // day2Forecast = forecastUrl.list[1].weather[0].icon;
+    // day3Forecast = forecastUrl.list[2].weather[0].icon;
+    // day4Forecast = forecastUrl.list[3].weather[0].icon;
+    // day5Forecast = forecastUrl.list[4].weather[0].icon;
+    var maxTemperature = forecastUrl.list[0,1,2,3,4].main.temp_max;
+    var humidity = forecastUrl.list[0,1,2,3,4].main.humidity;
+    var windSpeed = forecastUrl[0,1,2,3,4].imperial.wind.speed;
+    maxTemperature = JSON.parse(localStorage.getItem('maxTemperature')) || [];
+    humidity = JSON.parse(localStorage.getItem('humidity')) || [];
+    windSpeed = JSON.parse(localStorage.getItem('windSpeed')) || [];
+    }
 fetch(locQueryUrl)
     .then(function (response) {
         if (!response.ok) {
@@ -46,11 +62,7 @@ fetch(locQueryUrl)
      }
         return response.json();
     })
-    .then(query (location){
-        result
-    })
 }
 
-
-addEventListener('submit', searchForecast());
+searchButton.addEventListener('click', searchForecast());
 getParams();
