@@ -7,3 +7,7 @@ https://dsullivan42.github.io/Weather-App/
 
 
 ![image](https://github.com/dsullivan42/Weather-App/assets/97996876/a7ba1262-b108-4ca6-a14a-ec48c03d2847)
+
+
+https://cssgrid-generator.netlify.app/
+used this to get an idea of how to format the css
