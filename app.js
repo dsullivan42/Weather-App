@@ -42,20 +42,20 @@ function searchApi(query, appid) {
     localStorage.setItem('lon', 'lat', JSON.stringify(lon, lat));
     secondSearch();
 
-secondSearch(lon,lat,query,appid){
+function secondSearch(lon, lat, query, appid) {
     var forecastUrl = 'https://api.openweathermap.org/';
     forecastUrl = forecastUrl + 'data/2.5/forecast?lat=' + lat + '&lon=' + lon + '&appid=' + appid;
-    day1Forecast = forecastUrl.list[0].weather[0].icon + "Max Temperature: " + maxTemperature[1] + "Humidity: " + humidity[1] + "Wind Speed: " + windSpeed[1];
-    day2Forecast = forecastUrl.list[1].weather[0].icon;
-    day3Forecast = forecastUrl.list[2].weather[0].icon;
-    day4Forecast = forecastUrl.list[3].weather[0].icon;
-    day5Forecast = forecastUrl.list[4].weather[0].icon;
     maxTemperature = [];
     humidity = [];
     windSpeed = [];
     maxTemperature = forecastUrl.list[0,1,2,3,4].main.temp_max;
     humidity = forecastUrl.list[0,1,2,3,4].main.humidity;
     windSpeed = forecastUrl[0,1,2,3,4].imperial.wind.speed;
+    day1Forecast = forecastUrl.list[0].weather[0].icon + "Max Temperature: " + maxTemperature[1] + "\nHumidity: " + humidity[1] + "\nWind Speed: " + windSpeed[1];
+    day2Forecast = forecastUrl.list[1].weather[0].icon + "Max Temperature: " + maxTemperature[2] + "\nHumidity: " + humidity[2] + "\nWind Speed: " + windSpeed[2];
+    day3Forecast = forecastUrl.list[2].weather[0].icon + "Max Temperature: " + maxTemperature[3] + "\nHumidity: " + humidity[3] + "\nWind Speed: " + windSpeed[3];
+    day4Forecast = forecastUrl.list[3].weather[0].icon + "Max Temperature: " + maxTemperature[4] + "\nHumidity: " + humidity[4] + "\nWind Speed: " + windSpeed[4];
+    day5Forecast = forecastUrl.list[4].weather[0].icon + "Max Temperature: " + maxTemperature[5] + "\nHumidity: " + humidity[5] + "\nWind Speed: " + windSpeed[5];
     maxTemperature = JSON.parse(localStorage.getItem('maxTemperature')) || [];
     humidity = JSON.parse(localStorage.getItem('humidity')) || [];
     windSpeed = JSON.parse(localStorage.getItem('windSpeed')) || [];
