@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="http://api.openweathermap.org/geo/1.0/direct?q=limit=5&appid=d665717576f6934ee876304b7f3d052b">
+
+
+</head>
+<body>
+    <header>
+        <h1>Weather Dashboard</h1>
+    </header>
+    <div class="container">
+        <div class="cityInput">
+            <h2>Search for a City:</h2>
+            <div class="form">
+                <input type="search" id="formId" class="formInput">
+            </div>
+        <button type="button" class="btn btn-outline-primary" >search</button>
+        </div>
+        <div class="pastSearches">
+
+        </div>
+        <div class="todaysWeather">
+            <h3>Today's Weather</h3>
+            <div class="weatherTodayContent">
+                <div class="cityName"></div>
+                <div class="cityTemp"></div>
+                <div class="cityHumidity"></div>
+                <div class="cityWindSpeed"></div>
+                <div class="cityUVIndex"></div>
+            </div>
+        <div class="futureForecast">
+            <h4>5-Day Forecast</h4>
+            <ul class="forecasts">
+                <li id="forecast1"></li>
+                <li id="forecast2"></li>
+                <li id="forecast3"></li>
+                <li id="forecast4"></li>
+                <li id="forecast5"></li>
+            </ul>
+        </div>
+        </div>
+        <script src="./app.js"></script>
+</body>
+</html>
